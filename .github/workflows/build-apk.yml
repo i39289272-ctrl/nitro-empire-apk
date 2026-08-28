@@ -1,0 +1,45 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu al
+        uses: actions/checkout@v4
+
+      - name: Node.js kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: JDK kur
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Bagimliliklari yukle
+        run: npm install
+
+      - name: Android platformunu ekle
+        run: npx cap add android
+
+      - name: Web dosyalarini senkronize et
+        run: npx cap sync android
+
+      - name: gradlew calistirma izni ver
+        run: chmod +x android/gradlew
+
+      - name: Debug APK derle
+        run: cd android && ./gradlew assembleDebug --no-daemon
+
+      - name: APK yukle
+        uses: actions/upload-artifact@v4
+        with:
+          name: nitro-empire-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
