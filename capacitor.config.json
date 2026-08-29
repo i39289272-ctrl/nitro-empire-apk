@@ -1,0 +1,12 @@
+{
+  "appId": "com.nitroempire.game",
+  "appName": "NITRO EMPIRE",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": false
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}
