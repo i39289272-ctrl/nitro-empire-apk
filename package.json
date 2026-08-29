@@ -1,0 +1,15 @@
+{
+  "name": "nitro-empire-apk",
+  "version": "1.0.0",
+  "description": "NITRO EMPIRE Android APK build",
+  "scripts": {
+    "build": "echo no-build-needed"
+  },
+  "dependencies": {
+    "@capacitor/core": "latest",
+    "@capacitor/android": "latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest"
+  }
+}
